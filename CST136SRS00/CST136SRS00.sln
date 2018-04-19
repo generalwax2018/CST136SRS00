@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MontyHall", "MontyHall\MontyHall.vcxproj", "{2E04F75A-D634-4E52-924F-57ECDA30DB87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C342E296-5522-4526-938C-8B459ED179FE}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E04F75A-D634-4E52-924F-57ECDA30DB87}.Debug|x64.ActiveCfg = Debug|x64
+		{2E04F75A-D634-4E52-924F-57ECDA30DB87}.Debug|x64.Build.0 = Debug|x64
+		{2E04F75A-D634-4E52-924F-57ECDA30DB87}.Debug|x86.ActiveCfg = Debug|Win32
+		{2E04F75A-D634-4E52-924F-57ECDA30DB87}.Debug|x86.Build.0 = Debug|Win32
+		{2E04F75A-D634-4E52-924F-57ECDA30DB87}.Release|x64.ActiveCfg = Release|x64
+		{2E04F75A-D634-4E52-924F-57ECDA30DB87}.Release|x64.Build.0 = Release|x64
+		{2E04F75A-D634-4E52-924F-57ECDA30DB87}.Release|x86.ActiveCfg = Release|Win32
+		{2E04F75A-D634-4E52-924F-57ECDA30DB87}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0C14A17E-9C91-4EE2-B0F8-5A94BD1AB62D}
+	EndGlobalSection
+EndGlobal

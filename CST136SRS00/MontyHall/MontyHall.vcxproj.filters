@@ -32,7 +32,7 @@
     <ClCompile Include="LetsMakeaDeal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MontyHall.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

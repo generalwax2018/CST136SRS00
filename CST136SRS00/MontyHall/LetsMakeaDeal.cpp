@@ -11,8 +11,8 @@ LetsMakeaDeal::LetsMakeaDeal(int const doors, int const reveal_doors, string con
 	dTotal{ doors }, dRevealed(reveal_doors)
 {
 	
-	dec_collection_doors_.assign(doors, );
-	st_collection_doors_.(doors, ); 
+	dec_collection_doors_.assign(doors,prize::goat);
+	st_collection_doors_.(doors,doorState::close); 
 		runGame(); 
 
 

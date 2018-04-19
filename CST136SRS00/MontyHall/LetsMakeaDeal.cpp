@@ -3,10 +3,10 @@
 #include <random>
 #include <vector>
 #include <iostream>
+#include <cassert>
 
 
 using namespace std;
-
 
 
 LetsMakeaDeal::LetsMakeaDeal(int const doors, int const reveal_doors, string const decision):
@@ -15,7 +15,7 @@ LetsMakeaDeal::LetsMakeaDeal(int const doors, int const reveal_doors, string con
 	
 	dec_collection_doors_.assign(doors,prize::goat);
 	st_collection_doors_.assign(doors,doorState::close); 
-		//runGame(); 
+	//runGame(); 
 
 
 }
@@ -43,12 +43,29 @@ void LetsMakeaDeal::runGame(int const argc, char* const argv[])
 		fault = true; 
 
 	}
+	else
+		for (auto i = 1; i < argc: i += 2)
+		{
+			switch (argv[i][1])
+			{
+			case 'd':
+				{
+				istringstream iss(argv[i + 1]);
+				iss >> doors;
+
+					if (doors < 3)
+					{
+						fault = true; 
+					}
+					break; 
+				}
+			}
+		}
 
 
 }
 
 
-//To avoid bugs and pass around program arguments - c++ programming language pg 245
 
 
 int LetsMakeaDeal::makeDoors(int a)

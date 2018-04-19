@@ -11,8 +11,8 @@ public:
 	
 	enum class gameresult { won, lost };
 	
-	LetsMakeaDeal(int const doors, int const reveal_doors, string const decision, string const prize);
-	void runGame();
+	LetsMakeaDeal(int const doors, int const reveal_doors, string const decision);
+	void runGame(int const argc, char* const argv[]);
 	
 	
 private:
@@ -28,10 +28,13 @@ private:
 	string const dDecision; 
 	string const dState;
 	 
-	vector<prize> dec_collection_doors_;
-	vector<doorState> st_collection_doors_; 
+	vector<prize> dec_collection_doors_{};
+	vector<doorState> st_collection_doors_{}; 
 
 	int makeDoors(int a);
 	int makeRandom(int const max);
+
+	void carPlacement();
+	 
 };
 

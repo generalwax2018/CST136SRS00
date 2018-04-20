@@ -3,7 +3,7 @@ Monty Hall
 
 Name: FeeBass
 
----
+Wasn't able to fix the command line put and still needed to fix several functions to completed the program. 
 
 Purpose: 
 

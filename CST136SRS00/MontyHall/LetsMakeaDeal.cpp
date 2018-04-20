@@ -2,89 +2,123 @@
 #include "LetsMakeaDeal.h"
 #include <random>
 #include <vector>
-#include <iostream>
 #include <cassert>
-
 
 using namespace std;
 
-
-LetsMakeaDeal::LetsMakeaDeal(int const doors, int const reveal_doors, string const decision):
+LetsMakeaDeal::LetsMakeaDeal(int const doors, int const reveal_doors, string const decision) :
 	dTotal{ doors }, dRevealed(reveal_doors)
 {
-	
-	dec_collection_doors_.assign(doors,prize::goat);
-	st_collection_doors_.assign(doors,doorState::close); 
-	//runGame(); 
-
-
-}
-
-void LetsMakeaDeal::runGame(int const argc, char* const argv[])
-{
-
-
-	cout << "Number of game instances: " << endl;
-	cout << "Number of doors: " << endl; //(default == 3)
-	cout << "Number of doors to pre-disclose " << endl; // (default == 1)
-	cout << "Switch or Stay: " << endl; //enum for each kcase
-
-	
-	auto doors = 3;
-	auto open_doors = 1;
-	string strat = "unknown";
-
-	auto games = 0;
-	auto fault = false;
-
-	if ((argc - 1 ) / 2 < 2)
+	if( decision.compare("stay") == 0)
 	{
-		
-		fault = true; 
+		dDecision = decision::stay; 
 
 	}
 	else
-		for (auto i = 1; i < argc: i += 2)
-		{
-			switch (argv[i][1])
-			{
-			case 'd':
-				{
-				istringstream iss(argv[i + 1]);
-				iss >> doors;
+	{
+		dDecision = decision::switch_door; 
+	}
 
-					if (doors < 3)
-					{
-						fault = true; 
-					}
-					break; 
-				}
-			}
-		}
 
+
+	dec_collection_doors_.assign(doors, prize::goat);
+	st_collection_doors_.assign(doors, doorState::close);
+	runGame();
 
 }
 
+void LetsMakeaDeal::runGame()
+{
+	carPlacement();
+	randomOpen();
+	doorDecision();
+
+	if( dDecision == decision::switch_door)
+	{
+		doorDecision(); 
+	}
+
+	if (dec_collection_doors_[dGuess] == prize::car)
+	{
+		gameresult::won; 
+
+	}
+	else
+	{
+		gameresult::lost; 
+	}
 
 
 
-int LetsMakeaDeal::makeDoors(int a)
+}
+void LetsMakeaDeal::randomOpen()
 {
 	
-	return 0; 
+	auto check = makeRandom();
+	auto i = dRevealed;
+
+	while (i < 0)
+	{
+
+		while (dec_collection_doors_[check] == prize::car || st_collection_doors_[check] != doorState::open || dGuess == check)
+		{
+			check = makeRandom();
+
+		}
+
+		st_collection_doors_[check] = doorState::open;
+		--i; 
+
+	}
 }
+
+
+
+
+void LetsMakeaDeal::doorDecision()
+{
+
+	auto check = makeRandom();
+
+	if (dGuess < 0)
+	{
+		dGuess = check;
+	}
+	else
+	{
+		while( st_collection_doors_[check] == doorState::open || dGuess == check)
+		{
+			check = makeRandom();
+
+		}
+
+		dGuess = check; 
+	}
+	
+}
+
+
+
 
 void LetsMakeaDeal::carPlacement()
 {
-	dec_collection_doors_[makeRandom(dTotal)] = prize::car; 
+	dec_collection_doors_[makeRandom()] = prize::car;
+}
+
+void LetsMakeaDeal::guessPlacement()
+{
+	dGuess = makeRandom();
+
 }
 
 
-int LetsMakeaDeal::makeRandom(int const max)
+
+int LetsMakeaDeal::makeRandom()
 {
-	static random_device random; 
-	static mt19937 sGenertor {42};
-	uniform_int_distribution<int> const dis(0, (max -1));
+
+	static random_device random;
+	static mt19937 sGenertor{};
+	uniform_int_distribution<int> const dis(0, (dTotal - 1));
 
 	return dis(sGenertor);
 
